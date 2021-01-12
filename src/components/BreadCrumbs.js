@@ -5,7 +5,7 @@ import { toTitleCase } from "../utils/StringUtils";
 
 function BreadCrumbs(props) {
     let currentRoute = useLocation();
-    let pathSegments;
+    let pathSegments = [];
 
     if (currentRoute.pathname.startsWith("/"))
         pathSegments = currentRoute.pathname.substring(1).split("/")
@@ -16,7 +16,7 @@ function BreadCrumbs(props) {
     let breadCrumbs = pathSegments.map(segment => {
 
         buildingRoute = buildingRoute + "/" + segment;
-        segment = segment.replace("-", " ");
+        segment = segment.replace(/-/g, " ");
         segment = toTitleCase(segment);
         let crumb =  {
             name: segment,
@@ -35,7 +35,7 @@ function BreadCrumbs(props) {
     });
 
     return (
-        <div className="d-flex align-center constrained-sm p-horiz-xl">
+        <div className="d-flex align-center">
             <Link to="/" className="d-flex">
                 <HomeRoundedIcon className="m-right-md grey-text-6" fontSize="small" />
             </Link>

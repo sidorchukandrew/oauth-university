@@ -2,6 +2,10 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   color: black;
 }
@@ -21,6 +25,14 @@ body {
 
 .justify-center {
   justify-content: center;
+}
+
+.justify-start {
+  justify-content: start;
+}
+
+.justify-end {
+  justify-content: end;
 }
 
 .align-center {
@@ -174,7 +186,12 @@ body {
 
 .constrained-sm {
   max-width: 700px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.f-column {
+  flex-direction: column;
 }
 
 .font-sm {
@@ -191,6 +208,10 @@ body {
 
 .font-lg {
   font-size: 2.3em;
+}
+
+.bold-6 {
+  font-weight: 600;
 }
 
 .bold-5 {
@@ -240,9 +261,24 @@ body {
 
 .hov-secondary-color {
   transition: color 0.1s linear, font-weight 0.1s linear;
+  cursor: pointer;
 }
 
 .hov-secondary-color:hover {
   color: #5f57ec;
   font-weight: 500;
 }
+
+.double-height {
+  line-height: 2;
+}
+
+.fixed {
+  position: fixed;
+  top: 40%;
+}
+
+.black-text {
+  color: black;
+}
+

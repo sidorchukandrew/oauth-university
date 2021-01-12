@@ -1,5 +1,7 @@
 import { Component } from "react";
 import GuidesList from "./GuidesList";
+import BreadCrumbs from "./components/BreadCrumbs";
+import PageTitle from "./components/PageTitle";
 
 class SeriesDetail extends Component {
 
@@ -29,15 +31,16 @@ class SeriesDetail extends Component {
     render() {
         return (
             <div className="p-horiz-xl constrained-sm align-justify">
-
-                <div className="secondary-color d-flex justify-center bold-5 letter-space-sm font-md">SERIES</div>
-                <div className="d-flex justify-center font-lg bold-5 m-bottom-lg">
-                    Social Login
+                <div className="m-bottom-xl" >
+                    <BreadCrumbs />
                 </div>
+                <div className="constrained-sm m-bottom-lg">
+                        <PageTitle title="Social Login" pageType="SERIES" />
+                    </div>
 
                 <div className="d-flex justify-center grey-text-6 m-bottom-lg">
-                    Learn how to include social sites like Google and Facebook as ways to login
-                    on your sites with OAuth. People won't have to create yet another account with a unique password.
+                    Learn how to include social media platforms like Google and Facebook as ways to login
+                    to your sites with OAuth. People won't have to create yet another account with a unique password.
                 </div>
 
                 <GuidesList guides={this.state.guides} />
