@@ -2,6 +2,7 @@ import BreadCrumbs from "./components/BreadCrumbs";
 import PageTitle from "./components/PageTitle";
 import PlaceholderText from "./temp/TempText";
 import { useTheme } from '@material-ui/core/styles';
+import ButtonGenerator from "./components/ButtonGenerator";
 
 function GuideDetail(props) {
 
@@ -9,37 +10,41 @@ function GuideDetail(props) {
     let theme = useTheme();
     if (theme.breakpoints.up("md")) {
         quickLinks = (
-            <div className="d-flex f-column justify-end fixed p-horiz-xl grey-text-6 font-sm">
-                <span className="secondary-color bold-5 font-md">In this guide</span>
-                <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#what">What is?</a>
-                <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#why">Why is?</a>
-                <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#where">From where?</a>
-                <span className="p-vertical-sm hov-secondary-color">
-                    Why?
+            <div className="flex-grow d-flex justify-end">
+                <div className="d-flex f-column p-horiz-xl grey-text-6 font-sm fixed">
+
+                    <span className="secondary-color bold-5 font-md">In this guide</span>
+                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#what">What is?</a>
+                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#why">Why is?</a>
+                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#where">From where?</a>
+                    <span className="p-vertical-sm hov-secondary-color">
+                        Why?
                 </span>
+                </div>
             </div>
         );
     }
     return (
         <div>
-            <div className="d-flex">
+            <div className="d-flex ">
                 {quickLinks}
-                <div className="d-flex constrained-sm justify-start f-column p-horiz-lg">
+                <div className="d-flex justify-start constrained-sm f-column p-horiz-lg">
                     <div className="m-bottom-xl" >
                         <BreadCrumbs />
                     </div>
-                    <div className="constrained-sm m-bottom-lg">
+                    <div className="m-bottom-lg">
                         <PageTitle title="Login With Facebook" pageType="GUIDE" />
                     </div>
 
                     <div className="font-sm grey-text-6">
-                        { new Date().toDateString() } &#8226; 5 min read
+                        {new Date().toDateString()} &#8226; 5 min read
                     </div>
                     <div className="double-height grey-text-6">
+                        <ButtonGenerator />
                         {PlaceholderText}
                     </div>
                 </div>
-                {/* <div className="d-flex justify-center fixed">Possible Ads</div> */}
+                <div className="flex-grow"></div>
             </div>
         </div>
     )

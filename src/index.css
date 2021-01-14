@@ -48,6 +48,14 @@ body {
   border-top: 1px solid rgb(221, 221, 221);
 }
 
+.grey-border {
+  border: 1px solid rgb(221, 221, 221);
+}
+
+.no-border {
+  border: none;
+}
+
 .primary-color-bg {
   background-color: #1f2937;
 }
@@ -121,6 +129,10 @@ body {
   padding: 20px;
 }
 
+.m-md {
+  margin: 10px;
+}
+
 .m-bottom-md {
   margin-bottom: 10px;
 }
@@ -185,9 +197,9 @@ body {
 }
 
 .constrained-sm {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 700px;
 }
 
 .f-column {
@@ -199,7 +211,7 @@ body {
 }
 
 .font-xs {
-  font-size: 0.8em;
+  font-size: 0.76em;
 }
 
 .font-md {
@@ -220,6 +232,10 @@ body {
 
 .bold-4 {
   font-weight: 400;
+}
+
+.flex-grow {
+  flex: 1 0 0;
 }
 
 .shadow-sm {
@@ -276,9 +292,24 @@ body {
 .fixed {
   position: fixed;
   top: 40%;
+  margin-right:45px;
 }
 
 .black-text {
   color: black;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.foc-ring {
+  transition: box-shadow .15s linear;
+  box-shadow: 0 0 0 4px transparent;
+}
+
+.foc-ring:focus {
+  box-shadow: 0 0 0 4px #50abf078;
+  border: 1px solid transparent;
 }
 
