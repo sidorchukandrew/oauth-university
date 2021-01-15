@@ -40,7 +40,7 @@ function GuideDetail(props) {
                         {new Date().toDateString()} &#8226; 5 min read
                     </div>
                     <div className="double-height grey-text-6">
-                        <ButtonGenerator />
+                        <ButtonGenerator oauthUrl="https://www.linkedin.com/oauth/v2/authorization" />
                         {PlaceholderText}
                     </div>
                 </div>

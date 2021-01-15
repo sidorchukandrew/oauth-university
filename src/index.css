@@ -60,8 +60,24 @@ body {
   background-color: #1f2937;
 }
 
+.primary-color-text {
+  color: #1f2937;
+}
+
 .secondary-color {
   color: #5f57ec;
+}
+
+.tertiary-color {
+  color: #50abf0;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
+
+.horiz-scroll {
+  overflow-x: scroll;
 }
 
 .white-text {
@@ -138,6 +154,16 @@ body {
 }
 
 .m-bottom-lg {
+  margin-bottom: 20px;
+}
+
+.m-vertical-md {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.m-vertical-lg {
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -311,5 +337,9 @@ body {
 .foc-ring:focus {
   box-shadow: 0 0 0 4px #50abf078;
   border: 1px solid transparent;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
