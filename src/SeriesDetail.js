@@ -24,7 +24,7 @@ export default function SeriesDetail(props) {
         };
 
         fetchData();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div className="d-flex justify-center">

@@ -24,7 +24,7 @@ export default function GuideDetail(props) {
         }
 
         fetchData();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <div>
