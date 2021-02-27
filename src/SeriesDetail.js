@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 import { formatPageNameFromUrl } from "./utils/NavUtils";
 
 export default function SeriesDetail(props) {
-
     const location = useLocation();
 
     const [series, setSeries] = useState(null);
