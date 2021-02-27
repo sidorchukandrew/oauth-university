@@ -1,53 +1,47 @@
 import BreadCrumbs from "./components/BreadCrumbs";
 import PageTitle from "./components/PageTitle";
-import PlaceholderText from "./temp/TempText";
-import { useTheme } from '@material-ui/core/styles';
-import ButtonGenerator from "./components/ButtonGenerator";
+import { useEffect, useState } from 'react';
+import { useLocation } from "react-router-dom";
+import { formatPageNameFromUrl } from "./utils/NavUtils";
+import guidesApi from "./api/guides";
+import SectionsList from "./SectionsList";
 
-function GuideDetail(props) {
+export default function GuideDetail(props) {
 
-    let quickLinks;
-    let theme = useTheme();
-    if (theme.breakpoints.up("md")) {
-        quickLinks = (
-            <div className="flex-grow d-flex justify-end">
-                <div className="d-flex f-column p-horiz-xl grey-text-6 font-sm fixed">
+    const [guide, setGuide] = useState();
 
-                    <span className="secondary-color bold-5 font-md">In this guide</span>
-                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#what">What is?</a>
-                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#why">Why is?</a>
-                    <a className="p-vertical-sm hov-secondary-color" href="/series/social-login/login-with-facebook#where">From where?</a>
-                    <span className="p-vertical-sm hov-secondary-color">
-                        Why?
-                </span>
-                </div>
-            </div>
-        );
-    }
+    let location = useLocation();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                let pageName = formatPageNameFromUrl(location.pathname);
+                let result = await guidesApi.getByFilters({ title: pageName });
+                setGuide(result.data[0]);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchData();
+    }, []);
+
     return (
         <div>
-            <div className="d-flex ">
-                {quickLinks}
-                <div className="d-flex justify-start constrained-sm f-column p-horiz-lg">
-                    <div className="m-bottom-xl" >
-                        <BreadCrumbs />
-                    </div>
-                    <div className="m-bottom-lg">
-                        <PageTitle title="Login With Facebook" pageType="GUIDE" />
-                    </div>
-
-                    <div className="font-sm grey-text-6">
-                        {new Date().toDateString()} &#8226; 5 min read
-                    </div>
-                    <div className="double-height grey-text-6">
-                        <ButtonGenerator oauthUrl="https://www.linkedin.com/oauth/v2/authorization" />
-                        {PlaceholderText}
-                    </div>
+            <div className="d-flex justify-start constrained-sm f-column p-horiz-lg">
+                <div className="m-bottom-xl" >
+                    <BreadCrumbs />
                 </div>
-                <div className="flex-grow"></div>
+                <div className="m-bottom-lg">
+                    <PageTitle title={guide?.title} pageType="GUIDE" />
+                </div>
+
+                <div className="font-sm grey-text-6 m-bottom-md">
+                    {new Date(guide?.updated_at).toDateString()} &#8226; {guide?.read_time} min read
+                </div>
+
+                <SectionsList sections={guide?.sections ? guide.sections : []} />
             </div>
         </div>
     )
 }
-
-export default GuideDetail;

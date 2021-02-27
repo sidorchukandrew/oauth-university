@@ -223,8 +223,9 @@ body {
 }
 
 .constrained-sm {
-  flex: 0 1 700px;
+  flex: 1 1 700px;
   max-width: 700px;
+  margin: auto;
 }
 
 .f-column {
@@ -271,12 +272,12 @@ body {
   box-shadow: 0px 10px 15px 0px rgba(157, 106, 106, 0.15);
 }
 
-.hov-up {
-  transition: transform 0.2s ease-out, box-shadow 0.2s linear;
+.hov-grow {
+  transition: transform 0.1s linear, box-shadow 0.2s linear;
 }
 
-.hov-up:hover {
-  transform: translateY(-6px);
+.hov-grow:hover {
+  transform: scale(1.02);
   box-shadow: 0px 14px 20px 0px rgba(157, 106, 106, 0.23);
 }
 .rounded-top-sm {
@@ -301,13 +302,12 @@ body {
 }
 
 .hov-secondary-color {
-  transition: color 0.1s linear, font-weight 0.1s linear;
+  transition: color 0.1s linear;
   cursor: pointer;
 }
 
 .hov-secondary-color:hover {
   color: #5f57ec;
-  font-weight: 500;
 }
 
 .double-height {

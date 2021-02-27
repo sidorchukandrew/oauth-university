@@ -1,54 +1,47 @@
-import { Component } from "react";
 import GuidesList from "./GuidesList";
 import BreadCrumbs from "./components/BreadCrumbs";
 import PageTitle from "./components/PageTitle";
+import { useEffect, useState } from "react";
+import seriesApi from "./api/series";
+import { useLocation } from "react-router-dom";
+import { formatPageNameFromUrl } from "./utils/NavUtils";
 
-class SeriesDetail extends Component {
+export default function SeriesDetail(props) {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            guides: [
-                {
-                    title: "Login with Facebook"
-                },
-                {
-                    title: "Login with Google"
-                },
-                {
-                    title: "Login with Snapchat"
-                },
-                {
-                    title: "Login with LinkedIn"
-                },
-                {
-                    title: "Login with Discord"
-                }
-            ]
-        }
-    }
+    const location = useLocation();
 
-    render() {
-        return (
-            <div className="d-flex justify-center">
-                <div className="p-horiz-xl constrained-sm align-justify">
-                    <div className="m-bottom-xl" >
-                        <BreadCrumbs />
-                    </div>
-                    <div className="m-bottom-lg">
-                        <PageTitle title="Social Login" pageType="SERIES" />
-                    </div>
+    const [series, setSeries] = useState(null);
 
-                    <div className="d-flex justify-center grey-text-6 m-bottom-lg double-height">
-                        Learn how to include social media platforms like Google and Facebook as ways to login
-                        to your sites with OAuth. People won't have to create yet another account with a unique password.
+    useEffect(() => {
+        async function fetchData() {
+            let pageName = formatPageNameFromUrl(location.pathname);
+            try {
+                let result = await seriesApi.getByFilters({ title: pageName });
+                setSeries(result.data[0]);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    return (
+        <div className="d-flex justify-center">
+            <div className="p-horiz-xl constrained-sm align-justify">
+                <div className="m-bottom-xl" >
+                    <BreadCrumbs />
+                </div>
+                <div className="m-bottom-lg">
+                    <PageTitle title={series?.title} pageType="SERIES" />
                 </div>
 
-                    <GuidesList guides={this.state.guides} />
+                <div className="d-flex justify-center grey-text-6 m-bottom-lg double-height">
+                    {series?.description}
                 </div>
+
+                <GuidesList guides={series?.guides} />
             </div>
-        );
-    }
+        </div>
+    );
 }
-
-export default SeriesDetail;
