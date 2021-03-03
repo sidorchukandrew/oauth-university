@@ -1,14 +1,16 @@
-import { Component } from "react";
+import { Component, Fragment } from "react";
 import Grid from "@material-ui/core/Grid";
 import SeriesCard from "./components/SeriesCard";
 import seriesApi from "./api/series";
+import LoadingCard from "./components/LoadingCard";
 
 class Series extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            allSeries: []
+            allSeries: [],
+            loading: true
         }
     }
 
@@ -18,6 +20,8 @@ class Series extends Component {
             this.setState({ allSeries: result.data });
         } catch (error) {
             console.log(error);
+        } finally {
+            this.setState({ loading: false });
         }
     }
 
@@ -32,6 +36,17 @@ class Series extends Component {
             );
         });
 
+        let loadingCards = (
+            <Fragment>
+                <Grid item xs={12} sm={6} md={4}>
+                    <LoadingCard />
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                    <LoadingCard />
+                </Grid>
+            </Fragment>
+        );
+
         return (
             <div className="p-horiz-xl">
                 <div className="d-flex justify-center font-lg bold-5 m-bottom-xl">
@@ -40,10 +55,11 @@ class Series extends Component {
 
                 <div>
                     <Grid container justify="space-between" spacing={3}>
-                        {seriesCards}
+                        {this.loading ? loadingCards : seriesCards}
                     </Grid>
                 </div>
-            </div>);
+            </div>
+        );
     }
 }
 
