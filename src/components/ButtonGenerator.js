@@ -5,8 +5,10 @@ class ButtonGenerator extends Component {
 
     constructor(props) {
         super(props);
+        console.log(props);
         this.state = {
-            oauthUrl: props.oauthUrl,
+            base_url: props.config?.base_url,
+            scopes: props.config?.scopes,
             redirectUri: "",
             clientId: "",
             clientIdFocused: false,
@@ -86,26 +88,32 @@ class ButtonGenerator extends Component {
                         SCOPES
                 </label>
                     <div className="rounded-sm p-md grey-bg-4 grey-border">
-                        <div className="d-flex align-center">
-                            <Checkbox color="#50abf0" />
-                            <span className="font-sm">
-                                identity
-                        </span>
-                        </div>
+                        {
+                            this.state.scopes?.map(scope => {
+                                return (
+                                    <div className="d-flex align-center" key={scope}>
+                                        <Checkbox />
+                                        <span className="font-sm">
+                                            {scope}
+                                        </span>
+                                    </div>
+                                );
+                            })
+                        }
                     </div>
                 </div>
 
 
                 <div className="m-vertical-lg no-wrap horiz-scroll rounded-sm grey-bg-4 p-lg primary-color-text font-sm">
                     <span>
-                        {this.state.oauthUrl}?
+                        {this.state.base_url}?
                     </span>
                     <span className={this.state.clientIdFocused ? 'tertiary-color' : ''}>
                         client_id={this.state.clientId}
                     </span>
                     &
                     <span className={this.state.redirectUriFocused ? 'tertiary-color' : ''}>
-                        redirect_uri={this.state.redirectUri}
+                        redirect_uri={encodeURIComponent(this.state.redirectUri)}
                     </span>
                 </div>
             </div>

@@ -1,3 +1,4 @@
+import ButtonGenerator from "./components/ButtonGenerator";
 import Markdown from "./components/Markdown";
 
 export default function Section(props) {
@@ -10,7 +11,11 @@ export default function Section(props) {
             />
         );
     } else if (props.section?.section_type === "component") {
-        sectionContent = props.section?.content;
+        if (props.section?.content === "button generator") {
+            sectionContent = (
+                <ButtonGenerator config={props.section?.oauth_config} />
+            )
+        }
     }
 
     return sectionContent;
