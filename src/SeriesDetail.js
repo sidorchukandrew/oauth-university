@@ -14,9 +14,11 @@ export default function SeriesDetail(props) {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+        document.title = "Series";
         async function fetchData() {
             setLoading(true);
             let pageName = formatPageNameFromUrl(location.pathname);
+            document.title = "Series | " + pageName;
             try {
                 let result = await seriesApi.getByFilters({ title: pageName });
                 setSeries(result.data[0]);

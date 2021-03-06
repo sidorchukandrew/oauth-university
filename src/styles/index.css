@@ -15,6 +15,11 @@ body {
   margin: 0;
 }
 
+button, input, textarea, div {
+    outline: none;
+}
+
+
 .main-font {
   font-family: Poppins;
 }
@@ -149,6 +154,10 @@ body {
   margin: 10px;
 }
 
+.m-left-sm {
+  margin-left: 5px;
+}
+
 .m-bottom-md {
   margin-bottom: 10px;
 }
@@ -190,6 +199,11 @@ body {
   padding-right: 40px;
 }
 
+
+.p-right-lg {
+  padding-right: 20px;
+}
+
 .rounded-sm {
   border-radius: 5px;
 }
@@ -205,11 +219,11 @@ body {
 }
 
 .hov-lighten {
-  transition: background-color 0.1s linear;
+    transition: box-shadow 0.1s linear;
 }
 
 .hov-lighten:hover {
-  background-color: #84848429;
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.05);
 }
 
 .max-w-800 {
@@ -261,7 +275,11 @@ body {
 }
 
 .flex-grow {
-  flex: 1 0 0;
+    flex: 1 0 0;
+}
+
+.no-grow {
+    flex: 0 0 0;
 }
 
 .shadow-sm {

@@ -13,9 +13,11 @@ export default function GuideDetail(props) {
     let location = useLocation();
 
     useEffect(() => {
+        document.title = "Guide";
         async function fetchData() {
             try {
                 let pageName = formatPageNameFromUrl(location.pathname);
+                document.title = pageName;
                 let result = await guidesApi.getByFilters({ title: pageName });
                 setGuide(result.data[0]);
             } catch (error) {

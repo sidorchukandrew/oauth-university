@@ -4,7 +4,7 @@ export default function SectionsList(props) {
 
     let sections = props.sections?.map(section => {
         return (
-            <Section section={section} key={section.key} />
+            <Section section={section} key={section.id} />
         );
     });
     return (

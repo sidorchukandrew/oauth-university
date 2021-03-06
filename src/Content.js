@@ -4,18 +4,30 @@ import GuideDetail from "./GuideDetail";
 import Home from "./Home";
 import Series from "./Series";
 import SeriesDetail from "./SeriesDetail";
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: "#1f2937"
+        }
+    }
+});
 
 class Content extends Component {
     render() {
         return (
             <div className="p-vertical-xl">
-                <Switch>
-                    <Route path="/series/:name/:guide"><GuideDetail /></Route>
-                    <Route path="/series/:name"><SeriesDetail /></Route>
-                    <Route path="/series"><Series /></Route>
-                    <Route path="/guides"><Guides /></Route>
-                    <Route path="/"><Home /></Route>
-                </Switch>
+                <ThemeProvider theme={theme}>
+                    <Switch>
+                        <Route path="/series/:name/:guide"><GuideDetail /></Route>
+                        <Route path="/series/:name"><SeriesDetail /></Route>
+                        <Route path="/series"><Series /></Route>
+                        <Route path="/guides"><Guides /></Route>
+                        <Route path="/"><Home /></Route>
+                    </Switch>
+                </ThemeProvider>
             </div>
         );
     }

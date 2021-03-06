@@ -15,6 +15,7 @@ class Series extends Component {
     }
 
     async componentDidMount() {
+        document.title = "Series";
         try {
             let result = await seriesApi.getAll();
             this.setState({ allSeries: result.data });
