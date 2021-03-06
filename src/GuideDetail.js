@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { formatPageNameFromUrl } from "./utils/NavUtils";
 import guidesApi from "./api/guides";
 import SectionsList from "./SectionsList";
+import { PageView } from "./tracking";
 
 export default function GuideDetail(props) {
 
@@ -18,6 +19,7 @@ export default function GuideDetail(props) {
             try {
                 let pageName = formatPageNameFromUrl(location.pathname);
                 document.title = pageName;
+                PageView();
                 let result = await guidesApi.getByFilters({ title: pageName });
                 setGuide(result.data[0]);
             } catch (error) {

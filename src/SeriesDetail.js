@@ -6,6 +6,7 @@ import seriesApi from "./api/series";
 import { useLocation } from "react-router-dom";
 import { formatPageNameFromUrl } from "./utils/NavUtils";
 import Skeleton from "@material-ui/lab/Skeleton";
+import { PageView } from "./tracking";
 
 export default function SeriesDetail(props) {
     const location = useLocation();
@@ -19,6 +20,7 @@ export default function SeriesDetail(props) {
             setLoading(true);
             let pageName = formatPageNameFromUrl(location.pathname);
             document.title = "Series | " + pageName;
+            PageView();
             try {
                 let result = await seriesApi.getByFilters({ title: pageName });
                 setSeries(result.data[0]);

@@ -6,6 +6,7 @@ import Series from "./Series";
 import SeriesDetail from "./SeriesDetail";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { PageView } from "./tracking";
 
 const theme = createMuiTheme({
     palette: {
@@ -34,6 +35,7 @@ class Content extends Component {
 }
 
 function Guides() {
+    PageView();
     return <div>Guides</div>
 }
 
