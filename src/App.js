@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import Structure from './Structure';
-import GoogleAnalytics from "react-ga";
+import { initGA, PageView } from "./tracking";
 
 export default function App() {
 
     useEffect(() => {
-        GoogleAnalytics.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID);
-        GoogleAnalytics.pageview("/series");
+        initGA(process.env.REACT_APP_GA_MEASUREMENT_ID);
+        PageView();
     }, []);
 
     return (

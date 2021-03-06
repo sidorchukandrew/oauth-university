@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import SeriesCard from "./components/SeriesCard";
 import seriesApi from "./api/series";
 import LoadingCard from "./components/LoadingCard";
+import { PageView } from "./tracking";
 
 class Series extends Component {
 
@@ -16,6 +17,7 @@ class Series extends Component {
 
     async componentDidMount() {
         document.title = "Series";
+        PageView();
         try {
             let result = await seriesApi.getAll();
             this.setState({ allSeries: result.data });
