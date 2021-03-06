@@ -1,12 +1,15 @@
-import React from 'react';
+import { useEffect } from 'react';
 import Structure from './Structure';
+import GoogleAnalytics from "react-ga";
 
-class App extends React.Component {
-    render() {
-        return(
-            <Structure />
-        );
-    }
+export default function App() {
+
+    useEffect(() => {
+        GoogleAnalytics.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID);
+        GoogleAnalytics.pageview("/");
+    }, []);
+
+    return (
+        <Structure />
+    );
 }
-
-export default App;
