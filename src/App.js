@@ -6,7 +6,7 @@ export default function App() {
 
     useEffect(() => {
         GoogleAnalytics.initialize(process.env.REACT_APP_GA_MEASUREMENT_ID);
-        GoogleAnalytics.pageview("/");
+        GoogleAnalytics.pageview("/series");
     }, []);
 
     return (
