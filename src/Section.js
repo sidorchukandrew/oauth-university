@@ -19,7 +19,7 @@ export default function Section(props) {
     } else if (props.section?.section_type === "image") {
         sectionContent = (
             <div className="d-flex justify-center">
-                <img src={props.section.content} alt="" />
+                <img src={props.section.content} alt="" style={{ maxWidth: "100%" }} />
             </div>
         );
     }

@@ -13,10 +13,6 @@
     font-size: 16px;
 }
 
-.markdown img {
-    max-width: 700px;
-}
-
 .markdown p {
     text-indent: 3em;
 }
