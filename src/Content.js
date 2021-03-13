@@ -6,7 +6,7 @@ import Series from "./Series";
 import SeriesDetail from "./SeriesDetail";
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
-import { PageView } from "./tracking";
+import GuidesPage from "./GuidesPage";
 
 const theme = createMuiTheme({
     palette: {
@@ -25,18 +25,14 @@ class Content extends Component {
                         <Route path="/series/:name/:guide"><GuideDetail /></Route>
                         <Route path="/series/:name"><SeriesDetail /></Route>
                         <Route path="/series"><Series /></Route>
-                        <Route path="/guides"><Guides /></Route>
+                        <Route path="/guides/:guide"><GuideDetail /></Route>
+                        <Route path="/guides"><GuidesPage /></Route>
                         <Route path="/"><Home /></Route>
                     </Switch>
                 </ThemeProvider>
             </div>
         );
     }
-}
-
-function Guides() {
-    PageView();
-    return <div>Guides</div>
 }
 
 export default Content;

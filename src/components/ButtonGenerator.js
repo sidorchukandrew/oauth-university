@@ -153,15 +153,15 @@ class ButtonGenerator extends Component {
                             {this.state.base_url}?
                         </span>
                         <span className={this.state.clientIdFocused ? 'tertiary-color' : ''}>
-                            client_id={this.state.clientId}
+                            {this.props.config?.client_id_param_name}={this.state.clientId}
                         </span>
                         &
                         <span className={this.state.redirectUriFocused ? 'tertiary-color' : ''}>
-                            redirect_uri={encodeURIComponent(this.state.redirectUri)}
+                            {this.props.config?.redirect_uri_param_name}={encodeURIComponent(this.state.redirectUri)}
                         </span>
                         &
                         <span className="p-right-lg">
-                            scope={this.formatSelectedScopes()}
+                            {this.props.config?.scope_param_name}={this.formatSelectedScopes()}
                         </span>
                     </div>
                 </div>
