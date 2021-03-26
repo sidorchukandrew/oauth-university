@@ -6,12 +6,14 @@ function PageTitle(props) {
 
     return (
         <div>
-            <div className="secondary-color d-flex justify-center bold-5 letter-space-sm">
-                { pageType }
+            <div className="hide-small">
+                <div className="secondary-color d-flex justify-center bold-5 letter-space-sm">
+                    {pageType}
+                </div>
             </div>
-            <div className="d-flex justify-center font-lg bold-6 m-bottom-lg">
-                { props.title }
-            </div>
+            <h1>
+                {props.title}
+            </h1>
         </div>
     );
 }

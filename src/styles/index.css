@@ -359,7 +359,32 @@ button, input, textarea, div {
   cursor: pointer;
 }
 
+h1 {
+  text-align: center;
+  font-weight: 500;
+}
 
 @media (min-width: 0px) and (max-width: 600px) {
-  
+  .hide-small {
+    display: none;
+  }
+
+  h1 {
+    text-align: left;
+    margin: 10px 0px;
+  }
+
+  .p-vertical-xl {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .p-horiz-xl {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .m-bottom-lg {
+    margin-bottom: 10px;
+  }
 }

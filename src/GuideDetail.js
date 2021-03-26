@@ -33,12 +33,12 @@ export default function GuideDetail(props) {
     return (
         <div>
             <div className="d-flex justify-start constrained-sm f-column p-horiz-lg">
-                <div className="m-bottom-xl" >
-                    <BreadCrumbs />
+                <div className="">
+                    <div className="m-bottom-xl hide-small">
+                        <BreadCrumbs />
+                    </div>
                 </div>
-                <div className="m-bottom-lg">
-                    <PageTitle title={guide?.title} pageType="GUIDE" />
-                </div>
+                <PageTitle title={guide?.title} pageType="GUIDE" />
 
                 <div className="font-sm grey-text-6 m-bottom-md">
                     {new Date(guide?.updated_at).toDateString()} &#8226; {guide?.read_time} min read

@@ -44,7 +44,7 @@ export default function SeriesDetail(props) {
     return (
         <div className="d-flex justify-center">
             <div className="p-horiz-xl constrained-sm align-justify">
-                <div className="m-bottom-xl" >
+                <div className="m-bottom-xl hide-small" >
                     <BreadCrumbs />
                 </div>
                 <div className="m-bottom-lg">
