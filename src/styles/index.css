@@ -388,3 +388,9 @@ h1 {
     margin-bottom: 10px;
   }
 }
+
+input[type="submit"],
+input[type=text]  {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
