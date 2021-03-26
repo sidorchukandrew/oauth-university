@@ -25,4 +25,5 @@
     background-color: #f8f8fa;
     border-radius: 5px;
     padding:10px;
+    overflow-x: scroll;
 }
