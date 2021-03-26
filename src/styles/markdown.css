@@ -14,6 +14,13 @@
     text-indent: 3em;
 }
 
+@media (min-width: 0px) and (max-width: 600px) {
+  .markdown p {
+      text-indent: 0;
+      line-height: 1.6;
+  }
+}
+
 .markdown code {
     color: #5f57ec;
     background-color: #f8f8fa;
