@@ -8,6 +8,7 @@ import SectionsList from "./SectionsList";
 import { PageView } from "./tracking";
 import { Skeleton } from "@material-ui/lab";
 import { Fragment } from "react";
+import { getMonthDate } from "./utils/DateUtils";
 
 export default function GuideDetail(props) {
 
@@ -54,6 +55,7 @@ export default function GuideDetail(props) {
             <Skeleton animation="wave" height={35} />
         </Fragment>
     );
+
     let content = (
         <Fragment>
             <div className="m-bottom-xl hide-small">
@@ -62,7 +64,7 @@ export default function GuideDetail(props) {
             <PageTitle title={guide?.title} pageType="GUIDE" />
 
             <div className="font-sm grey-text-6 m-bottom-md">
-                {new Date(guide?.updated_at).toDateString()} &#8226; {guide?.read_time} min read
+                {getMonthDate(new Date(guide?.updated_at))} &#8226; {guide?.read_time} min read
             </div>
 
             <SectionsList sections={guide?.sections ? guide.sections : []} />

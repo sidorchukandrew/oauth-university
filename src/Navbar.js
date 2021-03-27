@@ -46,7 +46,7 @@ export default function Navbar(props) {
     );
 
     return (
-        <div className="primary-color-bg d-flex align-center p-vertical-md">
+        <div className="primary-color-bg d-flex justify-end align-center p-vertical-md">
             { isSmallScreen ? toggleSideNavButton : navLinks}
         </div>
     );

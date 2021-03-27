@@ -32,6 +32,10 @@ button, input, textarea, div {
   justify-content: center;
 }
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
 .justify-start {
   justify-content: start;
 }
@@ -213,6 +217,10 @@ button, input, textarea, div {
   padding-right: 20px;
 }
 
+.p-right-xl {
+  padding-right: 40px;
+}
+
 .rounded-sm {
   border-radius: 5px;
 }
@@ -248,6 +256,12 @@ button, input, textarea, div {
 .constrained-sm {
   flex: 1 1 700px;
   max-width: 700px;
+  margin: auto;
+}
+
+.constrained-lg {
+  flex: 1 1 900px;
+  max-width: 900px;
   margin: auto;
 }
 
