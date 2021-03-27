@@ -3,11 +3,16 @@ import HomePageEntry from "./components/HomePageEntry";
 import guidesApi from "./api/guides";
 import { Fragment } from "react";
 import LoadingHomePageEntry from "./components/LoadingHomePageEntry";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 export default function Home() {
 
     const [guides, setGuides] = useState([]);
     const [loading, setLoading] = useState(false);
+
+    const theme = useTheme();
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('xs'));
 
     useEffect(() => {
         async function fetchData() {
@@ -39,10 +44,20 @@ export default function Home() {
             </div>
             <LoadingHomePageEntry />
         </Fragment>
-    )
+    );
+
+    let classes = "constrained-lg d-flex justify-space-between";
+    if (isSmallScreen) {
+        classes += " f-column";
+    }
     return (
-        <div className="constrained-lg d-flex justify-space-between">
-            <h1 style={{ marginTop: "0px" }} className="p-right-lg">What's new?</h1>
+        <div className={classes}>
+            <h1
+                style={{ marginTop: "0px" }}
+                className={isSmallScreen ? "p-horiz-lg" : "p-right-lg"}
+            >
+                What's new?
+        </h1>
             <div className="p-horiz-lg">
                 {loading ? loadingIndicator : threeMostRecent}
             </div>

@@ -45,8 +45,13 @@ export default function Navbar(props) {
         </Fragment>
     );
 
+    let classes = "primary-color-bg d-flex align-center p-vertical-md"
+    if (!isSmallScreen) {
+        classes += " p-horiz-xl justify-end";
+    }
+
     return (
-        <div className="primary-color-bg d-flex justify-end align-center p-vertical-md">
+        <div className={classes}>
             { isSmallScreen ? toggleSideNavButton : navLinks}
         </div>
     );
