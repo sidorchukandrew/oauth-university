@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import HomePageEntry from "./components/HomePageEntry";
 import guidesApi from "./api/guides";
+import { Fragment } from "react";
+import LoadingHomePageEntry from "./components/LoadingHomePageEntry";
 
 export default function Home() {
 
@@ -29,13 +31,20 @@ export default function Home() {
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 
-    let threeMostRecent = guides?.slice(0, 3);
-
+    let threeMostRecent = guides?.slice(0, 3).map(guide => <HomePageEntry key={guide.id} item={guide} />);
+    let loadingIndicator = (
+        <Fragment>
+            <div style={{ width: "550px" }} className="p-vertical-md">
+                <LoadingHomePageEntry />
+            </div>
+            <LoadingHomePageEntry />
+        </Fragment>
+    )
     return (
         <div className="constrained-lg d-flex justify-space-between">
             <h1 style={{ marginTop: "0px" }} className="p-right-lg">What's new?</h1>
             <div className="p-horiz-lg">
-                {threeMostRecent?.map(guide => <HomePageEntry key={guide.id} item={guide} />)}
+                {loading ? loadingIndicator : threeMostRecent}
             </div>
         </div>
     );
